@@ -1,9 +1,10 @@
-const mysql = require('mysql');
 const { Telegraf } = require('telegraf');
-
 
 // Création d'un bot Telegram
 const bot = new Telegraf('6776313554:AAGREb-M49a0IGY3HWwSNXtSyNWvQjjtkpo');
+
+// Objet pour stocker les informations des utilisateurs
+const users = {};
 
 // Commande /start
 bot.command('start', (ctx) => {
@@ -21,4 +22,30 @@ bot.command('start', (ctx) => {
     };
 
     ctx.reply(welcomeMessage, keyboard);
+
+    // Initialisation des données de l'utilisateur
+    users[chatId] = {
+        balance: 0,
+        referralCount: 0
+    };
 });
+
+// Mise en œuvre du parrainage
+bot.on('callback_query', (ctx) => {
+    const chatId = ctx.chat.id;
+    const data = ctx.callbackQuery.data;
+
+    if (data === 'menu') {
+        // Logique du menu
+    } else if (data === 'referral') {
+        // Ajouter +1 au solde et au nombre de parrain
+        users[chatId].balance += 1;
+        users[chatId].referralCount += 1;
+
+        // Répondre à l'utilisateur
+        ctx.answerCbQuery('Vous avez rejoint avec succès grâce à un lien de parrainage!');
+    }
+});
+
+// Démarrer le bot
+bot.launch();
