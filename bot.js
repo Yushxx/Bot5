@@ -1,22 +1,6 @@
 const mysql = require('mysql');
 const { Telegraf } = require('telegraf');
 
-// Configuration de la base de données MySQL
-const connection = mysql.createConnection({
-    host: 'sql105.byethost7.com',
-    user: 'b7_36069088',
-    password: '009988',
-    database: 'b7_36069088_bethub'
-        });
-
-// Connexion à la base de données
-connection.connect((err) => {
-    if (err) {
-        console.error('Erreur de connexion à la base de données:', err);
-        return;
-    }
-    console.log('Connecté à la base de données MySQL');
-});
 
 // Création d'un bot Telegram
 const bot = new Telegraf('6776313554:AAGREb-M49a0IGY3HWwSNXtSyNWvQjjtkpo');
