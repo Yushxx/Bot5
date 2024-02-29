@@ -3,11 +3,11 @@ const { Telegraf } = require('telegraf');
 
 // Configuration de la base de données MySQL
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'votre_utilisateur',
-    password: 'votre_mot_de_passe',
-    database: 'votre_base_de_donnees'
-});
+    host: 'sql105.byethost7.com',
+    user: 'b7_36069088',
+    password: '009988',
+    database: 'b7_36069088_bethub'
+        });
 
 // Connexion à la base de données
 connection.connect((err) => {
